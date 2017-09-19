@@ -27,7 +27,7 @@ class SupportPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
+      <div className="row">
         <div className="col-sm-12 no-padding-left">
           <div className="support-box-wrapper">
             <div

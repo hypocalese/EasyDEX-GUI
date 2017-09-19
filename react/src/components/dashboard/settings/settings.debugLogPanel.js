@@ -102,70 +102,74 @@ class DebugLogPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <p>{ translate('INDEX.DEBUG_LOG_DESC') }</p>
-        <div className="margin-top-30">
-          <span className="pointer toggle">
-            <label className="switch">
-              <input
-                type="checkbox"
-                name="settings-app-debug-toggle"
-                value={ this.state.toggleAppRuntimeLog }
-                checked={ this.state.toggleAppRuntimeLog } />
-              <div
-                className="slider"
-                onClick={ this.toggleAppRuntimeLog }></div>
-            </label>
-            <span
-              className="title"
-              onClick={ this.toggleAppRuntimeLog }>Show app runtime log</span>
-          </span>
+      <div className="row">
+        <div className="col-sm-12">
+          <p>{ translate('INDEX.DEBUG_LOG_DESC') }</p>
+          <div className="margin-top-30">
+            <span className="pointer toggle">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  name="settings-app-debug-toggle"
+                  value={ this.state.toggleAppRuntimeLog }
+                  checked={ this.state.toggleAppRuntimeLog } />
+                <div
+                  className="slider"
+                  onClick={ this.toggleAppRuntimeLog }></div>
+              </label>
+              <span
+                className="title"
+                onClick={ this.toggleAppRuntimeLog }>Show app runtime log</span>
+            </span>
+          </div>
+          { !this.state.toggleAppRuntimeLog &&
+            <form
+              className="read-debug-log-import-form"
+              method="post"
+              action="javascript:"
+              autoComplete="off">
+              <div className="form-group form-material floating">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="debugLinesCount"
+                  id="readDebugLogLines"
+                  value={ this.state.debugLinesCount }
+                  onChange={ this.updateInput } />
+                <label
+                  className="floating-label"
+                  htmlFor="readDebugLogLines">{ translate('INDEX.DEBUG_LOG_LINES') }</label>
+              </div>
+              <div className="form-group form-material floating">
+                <select
+                  className="form-control form-material"
+                  name="debugTarget"
+                  id="settingsDelectDebugLogOptions"
+                  onChange={ this.updateInput }>
+                  <option value="iguana" className={ this.state.nativeOnly ? 'hide' : '' }>Iguana</option>
+                  <option value="komodo">Komodo</option>
+                </select>
+                <label
+                  className="floating-label"
+                  htmlFor="settingsDelectDebugLogOptions">{ translate('INDEX.TARGET') }</label>
+              </div>
+              <div className="col-sm-12 col-xs-12 text-align-center">
+                <button
+                  type="button"
+                  className="btn btn-primary waves-effect waves-light"
+                  onClick={ this.readDebugLog }>{ translate('INDEX.LOAD_DEBUG_LOG') }</button>
+              </div>
+              <div className="row">
+                <div className="col-sm-12 col-xs-12 text-align-left">
+                  <div className="padding-top-40 padding-bottom-20 horizontal-padding-0">{ this.renderDebugLogData() }</div>
+                </div>
+              </div>
+            </form>
+          }
+          { this.state.toggleAppRuntimeLog &&
+            <div className="margin-top-20">{ this.renderAppRuntimeLog() }</div>
+          }
         </div>
-        { !this.state.toggleAppRuntimeLog &&
-          <form
-            className="read-debug-log-import-form"
-            method="post"
-            action="javascript:"
-            autoComplete="off">
-            <div className="form-group form-material floating">
-              <input
-                type="text"
-                className="form-control"
-                name="debugLinesCount"
-                id="readDebugLogLines"
-                value={ this.state.debugLinesCount }
-                onChange={ this.updateInput } />
-              <label
-                className="floating-label"
-                htmlFor="readDebugLogLines">{ translate('INDEX.DEBUG_LOG_LINES') }</label>
-            </div>
-            <div className="form-group form-material floating">
-              <select
-                className="form-control form-material"
-                name="debugTarget"
-                id="settingsDelectDebugLogOptions"
-                onChange={ this.updateInput }>
-                <option value="iguana" className={ this.state.nativeOnly ? 'hide' : '' }>Iguana</option>
-                <option value="komodo">Komodo</option>
-              </select>
-              <label
-                className="floating-label"
-                htmlFor="settingsDelectDebugLogOptions">{ translate('INDEX.TARGET') }</label>
-            </div>
-            <div className="col-sm-12 col-xs-12 text-align-center">
-              <button
-                type="button"
-                className="btn btn-primary waves-effect waves-light"
-                onClick={ this.readDebugLog }>{ translate('INDEX.LOAD_DEBUG_LOG') }</button>
-            </div>
-            <div className="col-sm-12 col-xs-12 text-align-left">
-              <div className="padding-top-40 padding-bottom-20 horizontal-padding-0">{ this.renderDebugLogData() }</div>
-            </div>
-          </form>
-        }
-        { this.state.toggleAppRuntimeLog &&
-          <div className="margin-top-20">{ this.renderAppRuntimeLog() }</div>
-        }
       </div>
     );
   };

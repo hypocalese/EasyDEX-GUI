@@ -9,7 +9,11 @@ class WalletBackupPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">Wallet Backup section to be updated soon.</div>
+      <div className="row">
+        <div className="col-sm-12">
+          <p>Wallet Backup section to be updated soon.</p>
+        </div>
+      </div>
     );
   };
 }

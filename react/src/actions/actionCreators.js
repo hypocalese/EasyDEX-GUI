@@ -29,6 +29,7 @@ import {
   DISPLAY_CLAIM_INTEREST_MODAL,
   START_INTERVAL,
   STOP_INTERVAL,
+  GET_PIN_LIST,
   DASHBOARD_SYNC_ONLY_UPDATE,
   DISPLAY_IMPORT_KEY_MODAL,
 } from './storeType';
@@ -342,6 +343,13 @@ export function toggleClaimInterestModal(display) {
   return {
     type: DISPLAY_CLAIM_INTEREST_MODAL,
     displayClaimInterestModal: display,
+  }
+}
+
+export function getPinList(pinList) {
+  return {
+    type: GET_PIN_LIST,
+    pinList: pinList,
   }
 }
 

@@ -9,8 +9,7 @@ class WalletInfoPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <table className="table">
+         <table className="table">
           <thead>
             <tr>
               <th width="10%">{ translate('INDEX.KEY') }</th>
@@ -44,7 +43,6 @@ class WalletInfoPanel extends React.Component {
             </tr>
           </tbody>
         </table>
-      </div>
     );
   };
 }

@@ -18,6 +18,11 @@ import { PassPhraseGenerator } from '../../util/crypto/passphrasegenerator';
 import SwallModalRender from './swall-modal.render';
 import LoginRender from './login.render';
 import { translate } from '../../translate/translate';
+import {
+  encryptPassphrase,
+  loadPinList,
+  loginWithPin
+} from '../../actions/actions/pin';
 
 const IGUNA_ACTIVE_HANDLE_TIMEOUT = 3000;
 const IGUNA_ACTIVE_COINS_TIMEOUT = 10000;
@@ -45,6 +50,11 @@ class Login extends React.Component {
       trimPassphraseTimer: null,
       displayLoginSettingsDropdown: false,
       displayLoginSettingsDropdownSection: null,
+      shouldEncryptSeed: false,
+      encryptKey: '',
+      pubKey: '',
+      decryptKey: '',
+      selectedPin: '',
       isExperimentalOn: false,
     };
     this.toggleActivateCoinForm = this.toggleActivateCoinForm.bind(this);
@@ -59,6 +69,10 @@ class Login extends React.Component {
     this.execWalletCreate = this.execWalletCreate.bind(this);
     this.resizeLoginTextarea = this.resizeLoginTextarea.bind(this);
     this.toggleLoginSettingsDropdown = this.toggleLoginSettingsDropdown.bind(this);
+    this.updateEncryptKey = this.updateEncryptKey.bind(this);
+    this.updatePubKey = this.updatePubKey.bind(this);
+    this.updateDecryptKey = this.updateDecryptKey.bind(this);
+    this.loadPinList = this.loadPinList.bind(this);
   }
 
   // the setInterval handler for 'activeCoins'
@@ -98,6 +112,35 @@ class Login extends React.Component {
     });
   }
 
+  shouldEncryptSeed() {
+    return this.state.shouldEncryptSeed;
+  }
+
+  toggleShouldEncryptSeed() {
+    this.setState({
+      shouldEncryptSeed: !this.state.shouldEncryptSeed
+    });
+  }
+
+  updateEncryptKey(e) {
+    this.setState({
+      encryptKey: e.target.value
+    });
+  }
+
+  updatePubKey(e) {
+    this.setState({
+      pubKey: e.target.value
+    });
+  }
+
+
+  updateDecryptKey(e) {
+    this.setState({
+      decryptKey: e.target.value
+    });
+  }
+
   openSyncOnlyModal() {
     Store.dispatch(getSyncOnlyForks());
 
@@ -119,6 +162,8 @@ class Login extends React.Component {
 
   componentDidMount() {
     Store.dispatch(iguanaActiveHandle(true));
+    // this.loadPinList();
+
     let appConfig;
 
     try {
@@ -153,6 +198,9 @@ class Login extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    if (props.Login.pinList === 'no pins') {
+      props.Login.pinList = [];
+    }
     if (props &&
         props.Main &&
         props.Main.isLoggedIn) {
@@ -255,9 +303,27 @@ class Login extends React.Component {
       loginPassPhraseSeedType: null,
     });
 
-    Store.dispatch(
-      iguanaWalletPassphrase(this.state.loginPassphrase)
-    );
+    if (this.state.shouldEncryptSeed) {
+      Store.dispatch(encryptPassphrase(this.state.loginPassphrase, this.state.encryptKey, this.state.pubKey));
+    }
+
+    if (this.state.selectedPin) {
+      Store.dispatch(loginWithPin(this.state.decryptKey, this.state.selectedPin));
+    } else {
+      Store.dispatch(
+        iguanaWalletPassphrase(this.state.loginPassphrase)
+      );
+    }
+  }
+
+  loadPinList() {
+    Store.dispatch(loadPinList());
+  }
+
+  updateSelectedPin(e) {
+    this.setState({
+      selectedPin: e.target.value
+    });
   }
 
   getLoginPassPhraseSeedType(passPhrase) {
@@ -405,9 +471,9 @@ const mapStateToProps = (state) => {
     },
     Interval: {
       interval: state.Interval.interval,
-    }
+    },
+    Login: state.Login,
   };
-
 };
 
 export default connect(mapStateToProps)(Login);

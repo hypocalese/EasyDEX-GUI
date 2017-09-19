@@ -157,53 +157,57 @@ class ExportKeysPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <div>
-          <div className="padding-bottom-20">{ this.renderLB('INDEX.ONLY_ACTIVE_WIF_KEYS') }</div>
-          <div className="padding-bottom-20">
-            <i>{ this.renderLB('SETTINGS.EXPORT_KEYS_NOTE') }</i>
+      <div>
+        <div className="row">
+          <div className="col-sm-12">
+            <div className="padding-bottom-20">{ this.renderLB('INDEX.ONLY_ACTIVE_WIF_KEYS') }</div>
+            <div className="padding-bottom-20">
+              <i>{ this.renderLB('SETTINGS.EXPORT_KEYS_NOTE') }</i>
+            </div>
+            <strong>
+              <i>{ translate('INDEX.PLEASE_KEEP_KEYS_SAFE') }</i>
+            </strong>
           </div>
-          <strong>
-            <i>{ translate('INDEX.PLEASE_KEEP_KEYS_SAFE') }</i>
-          </strong>
         </div>
-        <div className="col-sm-12"></div>
-        <form
-          className="wifkeys-form"
-          method="post"
-          action="javascript:"
-          autoComplete="off">
-          <div className="form-group form-material floating">
-            <input
-              type="password"
-              className={ !this.state.seedInputVisibility ? 'form-control' : 'hide' }
-              name="wifkeysPassphrase"
-              id="wifkeysPassphrase"
-              onChange={ this.updateInput }
-              value={ this.state.wifkeysPassphrase } />
-            <textarea
-              className={ this.state.seedInputVisibility ? 'form-control' : 'hide' }
-              id="wifkeysPassphraseTextarea"
-              name="wifkeysPassphrase"
-              onChange={ this.updateInput }
-              value={ this.state.wifkeysPassphrase }></textarea>
-            <i
-              className={ 'seed-toggle fa fa-eye' + (!this.state.seedInputVisibility ? '-slash' : '') }
-              onClick={ this.toggleSeedInputVisibility }></i>
-            <label
-              className="floating-label"
-              htmlFor="wifkeysPassphrase">{ translate('INDEX.PASSPHRASE') }</label>
+        <div className="row">
+          <div className="col-sm-12">
+            <form
+              className="wifkeys-form"
+              method="post"
+              action="javascript:"
+              autoComplete="off">
+              <div className="form-group form-material floating">
+                <input
+                  type="password"
+                  className={ !this.state.seedInputVisibility ? 'form-control' : 'hide' }
+                  name="wifkeysPassphrase"
+                  id="wifkeysPassphrase"
+                  onChange={ this.updateInput }
+                  value={ this.state.wifkeysPassphrase } />
+                <textarea
+                  className={ this.state.seedInputVisibility ? 'form-control' : 'hide' }
+                  id="wifkeysPassphraseTextarea"
+                  name="wifkeysPassphrase"
+                  onChange={ this.updateInput }
+                  value={ this.state.wifkeysPassphrase }></textarea>
+                <i
+                  className={ 'seed-toggle fa fa-eye' + (!this.state.seedInputVisibility ? '-slash' : '') }
+                  onClick={ this.toggleSeedInputVisibility }></i>
+                <label
+                  className="floating-label"
+                  htmlFor="wifkeysPassphrase">{ translate('INDEX.PASSPHRASE') }</label>
+              </div>
+              <div className="col-sm-12 col-xs-12 text-align-center">
+                <button
+                  type="button"
+                  className="btn btn-primary waves-effect waves-light"
+                  onClick={ this.exportWifKeys }>{ translate('INDEX.GET_WIF_KEYS') }</button>
+              </div>
+            </form>
           </div>
-          <div className="col-sm-12 col-xs-12 text-align-center">
-            <button
-              type="button"
-              className="btn btn-primary waves-effect waves-light"
-              onClick={ this.exportWifKeys }>{ translate('INDEX.GET_WIF_KEYS') }</button>
-          </div>
-        </form>
-
-        <div className="col-sm-12 padding-top-15">
-          <div className="row">
+        </div>
+        <div className="row">
+          <div className="col-sm-12 padding-top-15">
             <table className="table">
               { this.renderWifKeys() }
             </table>

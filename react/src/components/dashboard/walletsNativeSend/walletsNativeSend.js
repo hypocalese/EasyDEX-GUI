@@ -81,10 +81,29 @@ class WalletsNativeSend extends React.Component {
   }
 
   setRecieverFromScan(receiver) {
-    this.setState({
-      sendTo: receiver,
-    });
+    try {
+      const recObj = JSON.parse(receiver);
 
+      if (recObj &&
+          typeof recObj === 'object') {
+        if (recObj.coin === this.props.ActiveCoin.coin) {
+          if (recObj.amount) {
+            this.setState({
+              amount: recObj.amount,
+            });
+          }
+          if (recObj.address) {
+            this.setState({
+              sendTo: recObj.address,
+            });
+          }
+        }
+      }
+    } catch (e) {
+      this.setState({
+        sendTo: receiver,
+      });
+    }
     document.getElementById('kmdWalletSendTo').focus();
   }
 
@@ -99,9 +118,11 @@ class WalletsNativeSend extends React.Component {
   }
 
   checkZAddressCount() {
-    if (this.props.ActiveCoin.addresses &&
-        (!this.props.ActiveCoin.addresses.private ||
-        this.props.ActiveCoin.addresses.private.length === 0)) {
+    const _addresses = this.props.ActiveCoin.addresses;
+
+    if (_addresses &&
+        (!_addresses.private ||
+        _addresses.private.length === 0)) {
       this.setState({
         renderAddressDropdown: false,
       });

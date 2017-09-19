@@ -143,9 +143,9 @@ class CliPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
+      <div className="row">
+        <div className="col-sm-12">
         <p>{ translate('INDEX.CLI_SELECT_A_COIN') }</p>
-        <div className="col-sm-12"></div>
         <form
           className="execute-cli-cmd-form"
           method="post"
@@ -189,6 +189,7 @@ class CliPanel extends React.Component {
             </div>
           </div>
         </form>
+        </div>
       </div>
     );
   };

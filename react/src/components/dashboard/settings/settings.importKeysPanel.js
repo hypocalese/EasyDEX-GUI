@@ -26,39 +26,46 @@ class ImportKeysPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <div>{ translate('INDEX.IMPORT_KEYS_DESC_P1') }</div><br/>
-        <div>{ translate('INDEX.IMPORT_KEYS_DESC_P2') }</div><br/>
-        <div>{ translate('INDEX.IMPORT_KEYS_DESC_P3') }</div><br/>
-        <div>
-          <strong>
-            <i>{ translate('INDEX.PLEASE_KEEP_KEYS_SAFE') }</i>
-          </strong>
+      <div>
+        <div className="row">
+          <div className="col-sm-12">
+            <p>{ translate('INDEX.IMPORT_KEYS_DESC_P1') }</p>
+            <p>{ translate('INDEX.IMPORT_KEYS_DESC_P2') }</p>
+            <p>{ translate('INDEX.IMPORT_KEYS_DESC_P3') }</p>
+            <p>
+              <strong>
+                <i>{ translate('INDEX.PLEASE_KEEP_KEYS_SAFE') }</i>
+              </strong>
+            </p>
+          </div>
         </div>
-        <div className="col-sm-12"></div>
-        <form
-          className="wifkeys-import-form"
-          method="post"
-          action="javascript:"
-          autoComplete="off">
-          <div className="form-group form-material floating">
-            <input
-              type="text"
-              className="form-control"
-              name="importWifKey"
-              id="importWifkey"
-              onChange={ this.updateInput } />
-            <label
-              className="floating-label"
-              htmlFor="importWifkey">{ translate('INDEX.INPUT_PRIV_KEY') }</label>
+        <div className="row">
+          <div className="col-sm-12">
+            <form
+              className="wifkeys-import-form"
+              method="post"
+              action="javascript:"
+              autoComplete="off">
+              <div className="form-group form-material floating">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="importWifKey"
+                  id="importWifkey"
+                  onChange={ this.updateInput } />
+                <label
+                  className="floating-label"
+                  htmlFor="importWifkey">{ translate('INDEX.INPUT_PRIV_KEY') }</label>
+              </div>
+              <div className="col-sm-12 col-xs-12 text-align-center">
+                <button
+                  type="button"
+                  className="btn btn-primary waves-effect waves-light"
+                  onClick={ this.importWifKey }>{ translate('INDEX.IMPORT_PRIV_KEY') }</button>
+              </div>
+            </form>
           </div>
-          <div className="col-sm-12 col-xs-12 text-align-center">
-            <button
-              type="button"
-              className="btn btn-primary waves-effect waves-light"
-              onClick={ this.importWifKey }>{ translate('INDEX.IMPORT_PRIV_KEY') }</button>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }

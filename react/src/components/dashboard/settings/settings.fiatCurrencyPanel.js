@@ -9,7 +9,11 @@ class FiatCurrencyPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">Fiat currency settings section to be updated soon.</div>
+      <div className="row">
+        <div className="col-sm-12">
+          <p>Fiat currency settings section to be updated soon.</p>
+        </div>
+      </div>
     );
   };
 }

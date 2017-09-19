@@ -283,26 +283,30 @@ class AppSettingsPanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <p>
-          <strong>{ translate('SETTINGS.CONFIG_RESTART_REQUIRED') }</strong>
-        </p>
-        <div className="col-sm-12 padding-top-15">
-          <table>
-            <tbody>
-            { this.renderConfigEditForm() }
-            </tbody>
-          </table>
+      <div>
+        <div className="row">
+          <div className="col-sm-12 padding-top-15">
+            <p>
+              <strong>{ translate('SETTINGS.CONFIG_RESTART_REQUIRED') }</strong>
+            </p>
+              <table>
+                <tbody>
+                { this.renderConfigEditForm() }
+                </tbody>
+              </table>
+          </div>
         </div>
-        <div className="col-sm-12 col-xs-12 text-align-center padding-top-35 padding-bottom-30">
-          <button
-            type="button"
-            className="btn btn-primary waves-effect waves-light"
-            onClick={ this._saveAppConfig }>{ translate('SETTINGS.SAVE_APP_CONFIG') }</button>
-          <button
-            type="button"
-            className="btn btn-primary waves-effect waves-light margin-left-30"
-            onClick={ this._resetAppConfig }>Reset to default</button>
+        <div className="row">
+          <div className="col-sm-12 col-xs-12 text-align-center padding-top-35 padding-bottom-30">
+            <button
+              type="button"
+              className="btn btn-primary waves-effect waves-light"
+              onClick={ this._saveAppConfig }>{ translate('SETTINGS.SAVE_APP_CONFIG') }</button>
+            <button
+              type="button"
+              className="btn btn-primary waves-effect waves-light margin-left-30"
+              onClick={ this._resetAppConfig }>Reset to default</button>
+          </div>
         </div>
       </div>
     );

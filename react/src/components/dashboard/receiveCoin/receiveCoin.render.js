@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from '../../../translate/translate';
 import QRModal from '../qrModal/qrModal';
+import InvoiceModal from '../invoiceModal/invoiceModal';
 
 export const AddressActionsBasiliskModeRender = function(address) {
   return (
@@ -69,6 +70,7 @@ export const _ReceiveCoinTableRender = function() {
           <label className="switch">
             <input
               type="checkbox"
+              value="on"
               checked={ this.state.hideZeroAddresses } />
             <div
               className="slider"
@@ -139,6 +141,7 @@ export const ReceiveCoinRender = function() {
                   <header className="panel-heading">
                     { this.isNativeMode() &&
                       <div className="panel-actions">
+                        <InvoiceModal />
                         <div
                           className={ 'dropdown' + (this.state.openDropMenu ? ' open' : '') }
                           onClick={ this.openDropMenu }>

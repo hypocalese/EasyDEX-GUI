@@ -33,15 +33,9 @@ class QRModal extends React.Component {
   }
 
   handleError(err) {
-    if (err.name === 'NoVideoInputDevicesError') {
-      this.setState({
-        error: translate('DASHBOARD.QR_ERR_NO_VIDEO_DEVICE'),
-      });
-    } else {
-      this.setState({
-        error: translate('DASHBOARD.QR_ERR_UNKNOWN'),
-      });
-    }
+    this.setState({
+      error: err.name === 'NoVideoInputDevicesError' ? translate('DASHBOARD.QR_ERR_NO_VIDEO_DEVICE') : translate('DASHBOARD.QR_ERR_UNKNOWN'),
+    });
   }
 
   openModal() {
@@ -68,6 +62,8 @@ class QRModal extends React.Component {
       modalIsOpen: false,
       errorShown: this.state.error ? true : false,
     });
+    
+    ReactDOM.unmountComponentAtNode(document.getElementById('webcam'));
   }
 
   render() {

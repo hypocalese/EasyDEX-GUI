@@ -307,6 +307,10 @@ export const _lang = {
       'TOGGLE_ZERO_ADDRESSES': 'Toggle empty addresses',
       'NEXT_PAGE': 'Next Page',
       'PREVIOUS_PAGE': 'Previous Page',
+      'CREATE_INVOICE': 'Create Invoice',
+      'CREATE_INVOICE_QR': 'Create Invoice QR Code',
+      'QR_CONTENT': 'QR Content',
+      'CHOOSE_RECEIVING_ADDRESS': 'Choose Address',
     },
     'ATOMIC': {
       'RAW_OUTPUT': 'Raw Output',
@@ -580,6 +584,10 @@ export const _lang = {
       'NXT_SEED': 'NXT',
       'SEED_COPIED': 'Seed copied',
       'SEED_SUCCESSFULLY_COPIED': 'The seed was successfully copied',
+      'ENCRYPT_SEED': 'Encrypt login seed',
+      'PUBKEY': 'pubkey',
+      'ENCRYPT_KEY': 'Encrypt key',
+      'DECRYPT_KEY': 'Decrypt key'
     },
     'SIDEBAR': {
       'EDEX_MOTTO': 'Most Secure, Easy and Native Decentralised Exchange',

@@ -96,74 +96,72 @@ class AddNodePanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="col-sm-12">
-              <p>{ translate('INDEX.USE_THIS_SECTION') }</p>
-            </div>
-            <div className="col-sm-8 col-xs-12">
-              <div className="form-group">
-                <select
-                  className="form-control form-material"
-                  name="getPeersCoin"
-                  onChange={ this.updateInput }>
-                  <option>{ translate('INDEX.SELECT_COIN') }</option>
-                  <AddCoinOptionsCrypto />
-                  <AddCoinOptionsAC />
-                  <AddCoinOptionsACFiat />
-                </select>
-              </div>
-            </div>
-            <div className="col-sm-4 col-xs-12 text-align-center">
-              <button
-                type="button"
-                className="btn btn-primary waves-effect waves-light"
-                onClick={ this.checkNodes }>{ translate('INDEX.CHECK_NODES') }</button>
-            </div>
-            <div className="col-sm-12">
-              <h5>
-                SuperNET Peers:
-              </h5>
-              <div>{ this.renderSNPeersList() }</div>
-              <h5>
-                Raw Peers:
-              </h5>
-              <div>{ this.renderPeersList() }</div>
+      <div className="row">
+        <div className="col-sm-6">
+          <div className="col-sm-12">
+            <p>{ translate('INDEX.USE_THIS_SECTION') }</p>
+          </div>
+          <div className="col-sm-8 col-xs-12">
+            <div className="form-group">
+              <select
+                className="form-control form-material"
+                name="getPeersCoin"
+                onChange={ this.updateInput }>
+                <option>{ translate('INDEX.SELECT_COIN') }</option>
+                <AddCoinOptionsCrypto />
+                <AddCoinOptionsAC />
+                <AddCoinOptionsACFiat />
+              </select>
             </div>
           </div>
+          <div className="col-sm-4 col-xs-12 text-align-center">
+            <button
+              type="button"
+              className="btn btn-primary waves-effect waves-light"
+              onClick={ this.checkNodes }>{ translate('INDEX.CHECK_NODES') }</button>
+          </div>
+          <div className="col-sm-12">
+            <h5>
+              SuperNET Peers:
+            </h5>
+            <div>{ this.renderSNPeersList() }</div>
+            <h5>
+              Raw Peers:
+            </h5>
+            <div>{ this.renderPeersList() }</div>
+          </div>
+        </div>
 
-          <div className="col-sm-6">
-            <div className="col-sm-12">
-              <p>{ translate('INDEX.USE_THIS_SECTION_PEER') }</p>
+        <div className="col-sm-6">
+          <div className="col-sm-12">
+            <p>{ translate('INDEX.USE_THIS_SECTION_PEER') }</p>
+          </div>
+          <div className="col-sm-8 col-xs-12">
+            <div className="form-group">
+              <select
+                className="form-control form-material"
+                name="addNodeCoin"
+                onChange={ this.updateInput }>
+                <option>{ translate('INDEX.SELECT_COIN') }</option>
+                <AddCoinOptionsCrypto />
+                <AddCoinOptionsAC />
+                <AddCoinOptionsACFiat />
+              </select>
             </div>
-            <div className="col-sm-8 col-xs-12">
-              <div className="form-group">
-                <select
-                  className="form-control form-material"
-                  name="addNodeCoin"
-                  onChange={ this.updateInput }>
-                  <option>{ translate('INDEX.SELECT_COIN') }</option>
-                  <AddCoinOptionsCrypto />
-                  <AddCoinOptionsAC />
-                  <AddCoinOptionsACFiat />
-                </select>
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="addPeerIP"
-                  placeholder={ translate('SETTINGS.ADD_PEER_IP') }
-                  onChange={ this.updateInput } />
-              </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                name="addPeerIP"
+                placeholder={ translate('SETTINGS.ADD_PEER_IP') }
+                onChange={ this.updateInput } />
             </div>
-            <div className="col-sm-4 col-xs-12 text-align-center">
-              <button
-                type="button"
-                className="btn btn-primary waves-effect waves-light"
-                onClick={ this.addNode }>{ translate('INDEX.ADD_NODE') }</button>
-            </div>
+          </div>
+          <div className="col-sm-4 col-xs-12 text-align-center">
+            <button
+              type="button"
+              className="btn btn-primary waves-effect waves-light"
+              onClick={ this.addNode }>{ translate('INDEX.ADD_NODE') }</button>
           </div>
         </div>
       </div>

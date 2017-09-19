@@ -107,7 +107,7 @@ class AppUpdatePanel extends React.Component {
 
   render() {
     return (
-      <div className="panel-body">
+      <div className="row">
         <div className="col-sm-4 padding-top-15">
           <h5>{ translate('INDEX.UI_UPDATE') }</h5>
           <div className="padding-top-15">

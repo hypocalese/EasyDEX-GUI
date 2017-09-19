@@ -5,6 +5,7 @@ import Main from '../main/main';
 
 function mapStateToProps(state) {
   return {
+    login: state.login,
     toaster: state.toaster,
     AddCoin: state.AddCoin,
     Main: state.Main,

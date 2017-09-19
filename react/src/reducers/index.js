@@ -10,10 +10,12 @@ import { Atomic } from './atomic';
 import { Settings } from './settings';
 import { Interval } from './interval';
 import { SyncOnly } from './syncOnly';
+import { Login } from "./login";
 
 const appReducer = combineReducers({
   AddCoin,
   toaster,
+  Login,
   Main,
   Dashboard,
   ActiveCoin,
