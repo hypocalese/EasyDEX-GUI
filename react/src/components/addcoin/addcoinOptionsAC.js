@@ -52,8 +52,10 @@ const addCoinOptionsAC = () => {
   if (config.experimentalFeatures) {
     const _customAssetChains = {
       mining: [
+        'mining',
       ],
       staking: [
+        'staking',
       ],
     };
 

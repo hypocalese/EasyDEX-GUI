@@ -157,4 +157,16 @@ export const acConfig = {
 		'ac_supply': 500000000,
 		addnode: '94.130.169.205',
 	},
+	MINING: {
+		'ac_supply': 100000,
+		'ac_reward': 10000000000,
+		'ac_end': 710001,
+	},
+	STAKING: {
+		'ac_supply': 100000,
+		'ac_stake': 50,
+		'ac_reward': 10000000000,
+		'ac_end': 710001,
+		pubkey: true,
+	},
 };

@@ -1012,6 +1012,8 @@ export const LANG_EN = {
     'BNTN': 'Blocnation (BNTN)',
     'OOT': 'Utrum (OOT)',
     'EQL': 'Equaliser (EQL)',
+    'STAKING': 'Staking asset (STAKING)',
+    'MINING': 'Mining asset (MINING)',
   },
   'TOOLS': {
     'TOOLS': 'Tools',
