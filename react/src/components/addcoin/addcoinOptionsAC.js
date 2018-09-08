@@ -8,15 +8,14 @@ const addCoinOptionsAC = () => {
   let _items = [];
 
   for (let i = 0; i < _assetChains.length; i++) {
-    let availableModes = _assetChains[i] !== 'AXO' && _assetChains[i] !== 'ETOMIC' && _assetChains[i] !== 'MESH' && _assetChains[i] !== 'CEAL' ? 'spv|native' : 'native';
+    let availableModes = _assetChains[i] !== 'AXO' && _assetChains[i] !== 'ETOMIC' && _assetChains[i] !== 'MESH' && _assetChains[i] !== 'CEAL' && _assetChains[i] !== 'DSEC' && _assetChains[i] !== 'MGNX' && _assetChains[i] !== 'PIRATE' ? 'spv|native' : 'native';
 
     if (mainWindow.arch !== 'x64') {
       availableModes = 'spv';
     }
 
     if (_assetChains[i] !== 'MVP' &&
-        _assetChains[i] !== 'VRSC' &&
-        _assetChains[i] !== 'DSEC') {
+        _assetChains[i] !== 'VRSC') {
       _items.push({
         label: translate(`ASSETCHAINS.${_assetChains[i].toUpperCase()}`),
         icon: _assetChains[i].toLowerCase(),

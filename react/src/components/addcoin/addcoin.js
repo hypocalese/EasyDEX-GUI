@@ -13,6 +13,7 @@ import {
 import Store from '../../store';
 import zcashParamsCheckErrors from '../../util/zcashParams';
 import mainWindow from '../../util/mainWindow';
+import { acConfig } from '../addcoin/payload';
 
 import CoinSelectorsRender from './coin-selectors.render';
 import AddCoinRender from './addcoin.render';
@@ -348,7 +349,8 @@ class AddCoin extends React.Component {
             coin,
             _coin.mode,
             { type: _coin.daemonParam },
-            Number(_coin.genProcLimit)
+            acConfig[coin.toUpperCase()] &&
+            acConfig[coin.toUpperCase()].genproclimit ? Number(_coin.genProcLimit || 1) : 0,
           ));
         }
 

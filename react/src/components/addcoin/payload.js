@@ -83,6 +83,7 @@ export const acConfig = {
 	},
 	COQUI: {
 		'ac_supply': 72000000,
+		ac_ccactivate: 200000,
  	},
 	CHAIN: {
   	'ac_supply': 999999,
@@ -138,5 +139,52 @@ export const acConfig = {
 	ZILLA: {
 		'ac_supply': 11000000,
 		addnode: '158.69.0.53',
+	},
+	DSEC: {
+		ac_supply: 7000000,
+		addnode: '185.148.147.30',
+	},
+	MGNX: {
+		ac_supply: 12465001,
+		ac_staked: 90,
+		ac_reward: 2000000000,
+		ac_halving: 525960,
+		ac_cc: 2,
+		ac_end: 2629800,
+		addnode: '45.76.32.178',
+		genproclimit: true,
+  },
+	CALL: {
+		ac_supply: 52500000,
+		ac_reward: 1250000000,
+		ac_end: 4200000,
+		ac_halving: 1400000,
+		addnode: [
+			'185.162.65.14',
+			'185.162.65.15',
+		],
+		genproclimit: true,
+	},
+	CCL: {
+		ac_supply: 200000000,
+		ac_end: 1,
+		ac_cc: 2,
+		addressindex: 1, // is this necessary(?)
+		spentindex: 1,
+		addnode: [
+			'142.93.136.89',
+			'195.201.22.89',
+		],
+	},
+	PIRATE: {
+		ac_supply: 0,
+		ac_reward: 25600000000,
+		ac_halving: 77777,
+		ac_private: 1,
+		addnode: [
+			'136.243.102.225',
+			'78.47.205.239',
+		],
+		genproclimit: true,
 	},
 };

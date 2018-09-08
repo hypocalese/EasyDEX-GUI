@@ -1034,6 +1034,12 @@ export const LANG_EN = {
     'PRLPAY': 'Pearl Pay',
     'OOT': 'Utrum',
     'ZILLA': 'ChainZilla',
+    DSEC: 'DevSec',
+    VRSC: 'VerusCoin',
+    MGNX: 'MagnaX',
+    CALL: 'Capital',
+    CCL: 'CoinCollect',
+    PIRATE: 'Pirate (Z address only)',
   },
   'CRYPTO': {
     'STRAT': 'Stratis',
